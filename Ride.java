@@ -1,4 +1,5 @@
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /*
  * A class for the nodes in the minheap data structure
  * 
@@ -6,7 +7,7 @@
  */
 public class Ride implements Comparable<Ride>{
     public int rideID;
-    public long timeStamp;
+    public Date timeStamp;
     public String passengerNames;
     public int startLocationID;
     public int endLocationID;
@@ -20,7 +21,7 @@ public class Ride implements Comparable<Ride>{
      * @param startLocationID ID of the start location
      * @param endLocationID ID of the end location
      */
-    public Ride(int rideID, long timestamp, String passengerNames, int startLocationID, int endLocationID) {
+    public Ride(int rideID, Date timestamp, String passengerNames, int startLocationID, int endLocationID) {
         this.rideID = rideID;
         this.timeStamp = timestamp;
         this.passengerNames = passengerNames;
@@ -35,14 +36,7 @@ public class Ride implements Comparable<Ride>{
      */
     @Override
     public int compareTo(Ride otherRide) {
-        // Compare based on timestamp
-        if (this.timeStamp < otherRide.timeStamp) {
-            return -1;
-        } else if (this.timeStamp > otherRide.timeStamp) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return this.timeStamp.compareTo(otherRide.timeStamp); 
     }
 
     /*
@@ -50,12 +44,7 @@ public class Ride implements Comparable<Ride>{
      */
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("--- Ride ").append(String.format("%03d", rideID)).append(" ---").append("\n");
-        stringBuilder.append("Time: ").append(new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date(timeStamp))).append("\n");
-        stringBuilder.append("Start ID: ").append(startLocationID).append("\n");
-        stringBuilder.append("Passengers:").append("\n").append(passengerNames).append("\n");
-        stringBuilder.append("--------------------");
-        return stringBuilder.toString();
+        return String.format("--- Ride %03d -------\nTime: %tT\nStart ID: %d\nEnd ID: %d\nPassengers:\n%s\n--------------------",
+        rideID, timeStamp, startLocationID, endLocationID, passengerNames);
     }
 }

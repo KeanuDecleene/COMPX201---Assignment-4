@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class MinHeap{
     Ride[] rides; //array of rides
@@ -89,8 +87,85 @@ public class MinHeap{
      * @param the ride to be removed
      */
     public void remove(Ride r){
+        if(k==0) return; //if heap is empty
+        int index = getIndexRide(r);
+        if(index == -1){
+            return; //didnt find element of thing to return
+        }
+        swap(index, k-1);
+        k--;
+        rides[k] = null;
+        downheap(index);
 
     }
 
+    /*
+     * function that performs the downhead on a specified index.
+     * 
+     * @param the index in the heap to start downheap from
+     */
+    private void downheap(int i){
+        int lChild, rChild, minChild;
+        while((lChild = getLeftIndex(i)) < k){ // while we have a left child
+            rChild = getRightIndex(i);
+            minChild = lChild;
 
+            if(rChild < k && rides[rChild].compareTo(rides[lChild]) < 0){ // find the smaller child
+                minChild = rChild;
+            }
+            if(rides[i].compareTo(rides[minChild]) <= 0){ //if the current ride is less than or equal to smaller child 
+                break; //stop
+            }
+            swap(i, minChild); //swap the ride with smaller child
+            i = minChild;
+        }
+    }
+
+    /*
+     * gets the left child of this ride
+     * 
+     * @param the index of the parent node
+     * @return the index of the left child
+     */
+    private int getLeftIndex(int i){
+        return 2 * i+1;
+    }
+
+    /*
+     * gets the right child of this ride
+     * 
+     * @param the index of the parent node
+     * @return the index of the right child
+     */
+    private int getRightIndex(int i){
+        return 2 * i + 2;
+
+    }
+
+    /*
+     * Function to give the index of a specific ride of in the minheap
+     * 
+     * @param the ride we need index for 
+     * @return the index of the Ride in the heap 
+     */
+    private int getIndexRide(Ride r){
+        for(int i = 0; i < k; i++){
+            if(rides[i].equals(r)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /*
+     * returns if there are no passengers waiting.
+     * 
+     * @return true if there are no passengers waiting, false otherwise
+     */
+    public boolean isEmpty(){
+        if(k == 0) return true; 
+        else return false;
+        
+
+    }
 }

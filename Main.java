@@ -1,22 +1,18 @@
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Main {
     public static void main(String[] args) {
-        try {
-            String timeString = "15:30:00";
-            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-            Date timeStamp = dateFormat.parse(timeString);
-
-            Ride ride1 = new Ride(1, timeStamp, "Joe Bloggs\nMary Smith\nCharlie Brown", 324, 586);
-
-            System.out.println(ride1);
+        try{
+        Ride car = new Ride( 4, "09:12:23", "06:12:23", 2, 4);
+        Ride kean = new Ride( 4, "09:12:23", "keanu", 2, 4);
+        //System.out.println(car);
+        //System.out.println(kean);
+        MinHeap minHeap = new MinHeap(10);
+        minHeap.insert(car);
+        minHeap.insert(kean);
+        minHeap.dump();
+        } catch (Exception e){
+            System.out.println();
         }
-        catch(Exception ex){
-            System.err.println(ex);
 
         }
-    }
 }
 

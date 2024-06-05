@@ -11,19 +11,23 @@ public class Ride implements Comparable<Ride>{
     public String passengerNames;
     public int startLocationID;
     public int endLocationID;
+    SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
 
     /*
      * Initializes a ride with the given parameters
      * 
      * @param rideID the ID of the ride
-     * @param timeStamp the time of the ride
+     * @param givenTime the time of the ride
      * @param passengerNames the names of the passengers
      * @param startLocationID ID of the start location
      * @param endLocationID ID of the end location
      */
-    public Ride(int rideID, Date timestamp, String passengerNames, int startLocationID, int endLocationID) {
+    public Ride(int rideID, String givenTime, String passengerNames, int startLocationID, int endLocationID) {
         this.rideID = rideID;
-        this.timeStamp = timestamp;
+        try{
+            this.timeStamp = time.parse(givenTime); //convert string to Date format
+        }
+        catch(Exception e){ System.out.println(e);}
         this.passengerNames = passengerNames;
         this.startLocationID = startLocationID;
         this.endLocationID = endLocationID;

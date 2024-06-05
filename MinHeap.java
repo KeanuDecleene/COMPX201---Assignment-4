@@ -3,14 +3,15 @@ import java.util.Arrays;
 public class MinHeap{
     Ride[] rides; //array of rides
     int k; // size of the heap 
+    int defaultSize = 10; // default size
 
     /*
      * initialise minHeap
      * 
      * @param the size of the array
      */
-    public MinHeap(int size){
-        rides = new Ride[size]; 
+    public MinHeap(){
+        rides = new Ride[defaultSize]; 
         k = 0;
     }
 
@@ -61,7 +62,7 @@ public class MinHeap{
      */
     public void insert(Ride r){
         if (k == rides.length){
-            expandHeap();
+            expandHeap(); //expand the heap
         }
         rides[k] = r;
         upheap();
@@ -139,7 +140,6 @@ public class MinHeap{
      */
     private int getRightIndex(int i){
         return 2 * i + 2;
-
     }
 
     /*
@@ -165,7 +165,54 @@ public class MinHeap{
     public boolean isEmpty(){
         if(k == 0) return true; 
         else return false;
-        
+    }
 
+    /*
+     * Looks at first ride in the heap without removing
+     *  
+     * @return the next ride in the heap
+     */
+    public Ride peek(){
+        if(k == 0) return null; // if empty, return null
+        return rides[0];
+    }
+
+    /*
+     * Takes a ride array with a specified number of rides and puts them into heap order
+     * 
+     * @param rides the array to be heapified 
+     */
+    public void heapify(Ride[] rides, int rideNum){
+        this.rides = rides; //assigns provided values and updates size
+        this.k = rideNum;
+        for(int i = k/2; i >= 0; i--){
+            downheap(i);
+        }
+        
+    }
+    /*
+     * implements the heap sort algorithm 
+     * 
+     * @return the sorted Ride array of all items in heap order
+     */
+    public Ride[] sort(){
+        Ride[] rideSorted = Arrays.copyOf(rides, k);
+        int origSize = k;
+
+        for(int i = origSize / 2 - 1; i >= 0; i--){ //builds the heap
+            downheap(i);
+        }
+        //Extract from the heap one by one and place in sorted array
+        for(int i = origSize - 1; i > 0; i--){
+            //swap the root with last element
+            Ride temp = rideSorted[0];
+            rideSorted[0] = rideSorted[i];
+            rideSorted[i] = temp;
+            //reduce the size of heap and restore heap
+            k--;
+            downheap(0);
+        }
+        k = origSize;
+        return rideSorted;
     }
 }

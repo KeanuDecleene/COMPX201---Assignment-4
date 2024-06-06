@@ -44,7 +44,7 @@ public class MinHeapTest{
         String[] passengers = {"johnny", "mitchell"};
         Ride ride = new Ride(1, "04:12:23",passengers, 1, 2);
         heapTest.insert(ride);
-        assertEquals(ride, heapTest.peek());
+        Assertions.assertEquals(ride, heapTest.peek());
     }
 
 

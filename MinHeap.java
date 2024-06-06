@@ -19,8 +19,8 @@ public class MinHeap{
      * for all the rides in the array print them out to terminal 
      */
     public void dump(){
-        for(Ride r : rides){
-            if(!r.equals(null)){
+        for (Ride r : rides) {
+            if (r != null) {
                 System.out.println(r.toString());
             }
         }
@@ -45,7 +45,7 @@ public class MinHeap{
      * @return the index of the parent
      */
     private int getParent(int i){
-        return (i-1)/2;
+        return (i - 1) / 2;
     }
 
     /*
@@ -73,9 +73,9 @@ public class MinHeap{
      * Swaps the minimum values up the tree to maintain the heap integrity 
      */
     private void upheap(){
-        int i = k - 1;
+        int i = k;
         int parent = getParent(i);
-        while (i > 0 && rides[i].compareTo(rides[parent]) < 0){ //while not root and current rides is less than the parent 
+        while (i > 0 && rides[i].compareTo(rides[parent]) < 0) { //while not root and current ride is less than the parent 
             swap(i, parent);
             i = parent;
             parent = getParent(i);
@@ -88,33 +88,32 @@ public class MinHeap{
      * @param the ride to be removed
      */
     public void remove(Ride r){
-        if(k==0) return; //if heap is empty
+        if (k == 0) return; //if heap is empty
         int index = getIndexRide(r);
-        if(index == -1){
-            return; //didnt find element of thing to return
+        if (index == -1) {
+            return; //didn't find element to remove
         }
-        swap(index, k-1);
+        swap(index, k - 1);
         k--;
         rides[k] = null;
         downheap(index);
-
     }
 
     /*
-     * function that performs the downhead on a specified index.
+     * function that performs the downheap on a specified index.
      * 
      * @param the index in the heap to start downheap from
      */
     private void downheap(int i){
         int lChild, rChild, minChild;
-        while((lChild = getLeftIndex(i)) < k){ // while we have a left child
+        while ((lChild = getLeftIndex(i)) < k){ // while we have a left child
             rChild = getRightIndex(i);
             minChild = lChild;
 
-            if(rChild < k && rides[rChild].compareTo(rides[lChild]) < 0){ // find the smaller child
+            if (rChild < k && rides[rChild].compareTo(rides[lChild]) < 0){ // find the smaller child
                 minChild = rChild;
             }
-            if(rides[i].compareTo(rides[minChild]) <= 0){ //if the current ride is less than or equal to smaller child 
+            if (rides[i].compareTo(rides[minChild]) <= 0){ //if the current ride is less than or equal to smaller child 
                 break; //stop
             }
             swap(i, minChild); //swap the ride with smaller child
@@ -128,8 +127,8 @@ public class MinHeap{
      * @param the index of the parent node
      * @return the index of the left child
      */
-    private int getLeftIndex(int i){
-        return 2 * i+1;
+    private int getLeftIndex(int i) {
+        return 2 * i + 1;
     }
 
     /*
@@ -138,12 +137,12 @@ public class MinHeap{
      * @param the index of the parent node
      * @return the index of the right child
      */
-    private int getRightIndex(int i){
+    private int getRightIndex(int i) {
         return 2 * i + 2;
     }
 
     /*
-     * Function to give the index of a specific ride of in the minheap
+     * Function to give the index of a specific ride in the minheap
      * 
      * @param the ride we need index for 
      * @return the index of the Ride in the heap 
@@ -162,9 +161,8 @@ public class MinHeap{
      * 
      * @return true if there are no passengers waiting, false otherwise
      */
-    public boolean isEmpty(){
-        if(k == 0) return true; 
-        else return false;
+    public boolean isEmpty() {
+        return k == 0;
     }
 
     /*
@@ -172,8 +170,8 @@ public class MinHeap{
      *  
      * @return the next ride in the heap
      */
-    public Ride peek(){
-        if(k == 0) return null; // if empty, return null
+    public Ride peek() {
+        if (k == 0) return null; // if empty, return null
         return rides[0];
     }
 
@@ -182,28 +180,28 @@ public class MinHeap{
      * 
      * @param rides the array to be heapified 
      */
-    public void heapify(Ride[] rides, int rideNum){
+    public void heapify(Ride[] rides, int rideNum) {
         this.rides = rides; //assigns provided values and updates size
         this.k = rideNum;
-        for(int i = k/2; i >= 0; i--){
+        for (int i = k / 2; i >= 0; i--) {
             downheap(i);
         }
-        
     }
+    
     /*
      * implements the heap sort algorithm 
      * 
      * @return the sorted Ride array of all items in heap order
      */
-    public Ride[] sort(){
+    public Ride[] sort() {
         Ride[] rideSorted = Arrays.copyOf(rides, k);
         int origSize = k;
 
-        for(int i = origSize / 2 - 1; i >= 0; i--){ //builds the heap
+        for (int i = origSize / 2 - 1; i >= 0; i--) { //builds the heap
             downheap(i);
         }
         //Extract from the heap one by one and place in sorted array
-        for(int i = origSize - 1; i > 0; i--){
+        for (int i = origSize - 1; i > 0; i--) {
             //swap the root with last element
             Ride temp = rideSorted[0];
             rideSorted[0] = rideSorted[i];

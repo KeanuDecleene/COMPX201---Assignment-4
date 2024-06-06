@@ -193,7 +193,7 @@ public class MinHeapTest{
     /*
      * Testing to see if heapify given rides array returns a valid heapified version
      */
-    @test
+    @Test
     @DisplayName("Heapify Test")
     public void testHeapify(){
         Ride[] giveRides = {new Ride(1, "04:12:23",new String[] {"Keanux", "Jubilee"}, 1, 2),
@@ -203,7 +203,7 @@ public class MinHeapTest{
         new Ride(5, "1:12:23", new String[]{"Keanux", "Ronald"}, 5, 6)};
 
         heapTest.heapify(giveRides, 5);
-        
+
         Assertions.assertTrue(verifyHeapOrder());
     }
 

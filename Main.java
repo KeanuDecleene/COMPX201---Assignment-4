@@ -28,7 +28,7 @@ public class Main {
         heapTest.sort();
         heapTest.dump();
         heapTest.heapify(heapTest.rides, 5);
-        heapTest.dump();
+        
 
         try{
         String[] h =  {"alice", "James"};

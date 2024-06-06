@@ -109,7 +109,12 @@ public class MinHeap{
         while ((lChild = getLeftIndex(i)) < k){ // while we have a left child
             rChild = getRightIndex(i);
             minChild = lChild;
-
+            if (rides[lChild] == null) {
+                break;
+            }
+            if (rChild < k && rides[rChild] == null) {
+                break;
+            }
             if (rChild < k && rides[rChild].compareTo(rides[lChild]) < 0){ // find the smaller child
                 minChild = rChild;
             }
@@ -208,6 +213,25 @@ public class MinHeap{
             k--;
             downheap(0);
         }
+        reverseHeap(); //reverse the array as it is sorted backwards
         return rides;
     }
+
+    /*
+     * reverse the order of the rides in the heap
+     * 
+     */
+    private void reverseHeap() {
+        int start = 0;
+        int end = rides.length - 1;
+        while (start < end) {
+            Ride temp = rides[start];
+            rides[start] = rides[end];
+            rides[end] = temp;
+            start++;
+            end--;
+    
+    }
+}
+
 }

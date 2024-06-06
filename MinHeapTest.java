@@ -73,7 +73,7 @@ public class MinHeapTest{
      * that the minHeap array is maintained correctly whilst inserting
      */
     @Test 
-    @DisplayName("Entire heap is inserted correctly and heap property is maintained correctly")
+    @DisplayName("Entire heap is inserted correctly and heap property is maintained")
     public void testInsertWithOrder(){
         buildHeap();
         Boolean pass;
@@ -128,7 +128,7 @@ public class MinHeapTest{
      * Removing the minimum element from the heap multiple times and verifying the order
      */
     @Test
-    @DisplayName("Removing the minimum element from the heap multiple times and verifying heap order properties after each removal")
+    @DisplayName("Removing minimum element from the heap multiple times and verifying heap order properties")
     public void testRemoveMin(){
         buildHeap();
         heapTest.remove(heapTest.peek()); // removes the minimum element from the heap
@@ -177,6 +177,37 @@ public class MinHeapTest{
         buildHeap();
         Assertions.assertEquals(heapTest.rides[0], heapTest.peek());
     }
+
+    /*
+     * Testing to see if peek returns null when heap is empty
+     */
+    @Test
+    @DisplayName("Peek returns null when heap is empty")
+    public void testPeekEmpty(){
+        Assertions.assertNull(heapTest.peek());
+    }
+
+
+    //Heapify tests
+
+    /*
+     * Testing to see if heapify given rides array returns a valid heapified version
+     */
+    @test
+    @DisplayName("Heapify Test")
+    public void testHeapify(){
+        Ride[] giveRides = {new Ride(1, "04:12:23",new String[] {"Keanux", "Jubilee"}, 1, 2),
+        new Ride(2, "03:12:23", new String[]{"Gerald", "Comet"}, 2, 3),
+        new Ride(3, "07:12:23", new String[] {"Max", "Jubilee"}, 3, 4),
+        new Ride(4, "10:12:23", new String[]{"Cooper", "Fair"}, 4, 5),
+        new Ride(5, "1:12:23", new String[]{"Keanux", "Ronald"}, 5, 6)};
+
+        heapTest.heapify(giveRides, 5);
+        
+        Assertions.assertTrue(verifyHeapOrder());
+    }
+
+
 
 
 }

@@ -1,6 +1,15 @@
 import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
+        MinHeap heapTest = new MinHeap();
+        String[] passengers = {"johnny", "mitchell"};
+        Ride ride = new Ride(1, "04:12:23",passengers, 1, 2);
+        heapTest.insert(ride);
+        Ride n = heapTest.peek();
+        if (n.equals(ride)){
+            System.out.println("TRUE");
+        }
+
         try{
         String[] h =  {"alice", "James"};
         String[] b = {"kean", "jksj"," James"};
@@ -15,7 +24,7 @@ public class Main {
         minHeap.insert(kean);
         minHeap.insert(keanu);
         minHeap.insert(car);
-        minHeap.dump();
+       // minHeap.dump();
         } catch (Exception e){
             System.out.println();
         }

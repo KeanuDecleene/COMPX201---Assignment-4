@@ -119,7 +119,7 @@ public class MinHeapTest{
      * Removing the minimum element from the heap multiple times and verifying the order
      */
     @Test
-    @DisplayName("Removing min ride from heap multiple times & verifying heap order properties")
+    @DisplayName("Remove min ride multiple times & verifying heap order properties")
     public void testRemoveMin(){
         buildHeap();
         heapTest.remove(heapTest.peek()); // removes the minimum element from the heap

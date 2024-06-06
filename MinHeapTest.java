@@ -125,7 +125,7 @@ public class MinHeapTest{
      */
     @Test
     @Order(6)
-    @DisplayName("Removing minimum element from the heap multiple times and verifying heap order properties")
+    @DisplayName("Removing min ride from heap multiple times & verifying heap order properties")
     public void testRemoveMin(){
         buildHeap();
         heapTest.remove(heapTest.peek()); // removes the minimum element from the heap
@@ -148,7 +148,7 @@ public class MinHeapTest{
      */
     @Test
     @Order(7)
-    @DisplayName("Empty Heap Test")
+    @DisplayName("Testing Empty Heap")
     public void testIsEmpty(){
         Assertions.assertTrue(heapTest.isEmpty());
     }
@@ -158,7 +158,7 @@ public class MinHeapTest{
      */
     @Test
     @Order(8)
-    @DisplayName("Non Empty Heap Test")
+    @DisplayName("Testing Non Empty Heap")
     public void testIsNotEmpty(){
         buildHeap();
         Assertions.assertFalse(heapTest.isEmpty());
@@ -196,7 +196,7 @@ public class MinHeapTest{
      */
     @Test
     @Order(11)
-    @DisplayName("Heapify Test")
+    @DisplayName("Testing Heapify function returns a valid MinHeap")
     public void testHeapify(){
         Ride[] giveRides = {new Ride(1, "04:12:23",new String[] {"Keanux", "Jubilee"}, 1, 2),
         new Ride(2, "03:12:23", new String[]{"Gerald", "Comet"}, 2, 3),

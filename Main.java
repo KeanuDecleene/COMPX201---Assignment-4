@@ -22,9 +22,13 @@ public class Main {
             pass = false;
         }
         
-        heapTest.dump();
+        //heapTest.dump();
         System.out.println(heapTest.k);
         System.out.println(pass);
+        heapTest.sort();
+        heapTest.dump();
+        heapTest.heapify(heapTest.rides, 5);
+        heapTest.dump();
 
         try{
         String[] h =  {"alice", "James"};

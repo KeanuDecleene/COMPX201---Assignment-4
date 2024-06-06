@@ -117,9 +117,10 @@ public class MinHeap{
                 break; //stop
             }
             swap(i, minChild); //swap the ride with smaller child
-            i = minChild;
+                i = minChild;
         }
     }
+
 
     /*
      * gets the left child of this ride
@@ -194,23 +195,19 @@ public class MinHeap{
      * @return the sorted Ride array of all items in heap order
      */
     public Ride[] sort() {
-        Ride[] rideSorted = Arrays.copyOf(rides, k);
-        int origSize = k;
-
-        for (int i = origSize / 2 - 1; i >= 0; i--) { //builds the heap
+        for (int i = k / 2 - 1; i >= 0; i--) { //builds the heap
             downheap(i);
         }
         //Extract from the heap one by one and place in sorted array
-        for (int i = origSize - 1; i > 0; i--) {
+        for (int i = k - 1; i > 0; i--) {
             //swap the root with last element
-            Ride temp = rideSorted[0];
-            rideSorted[0] = rideSorted[i];
-            rideSorted[i] = temp;
+            Ride temp = rides[0];
+            rides[0] = rides[i];
+            rides[i] = temp;
             //reduce the size of heap and restore heap
             k--;
             downheap(0);
         }
-        k = origSize;
-        return rideSorted;
+        return rides;
     }
 }

@@ -202,7 +202,8 @@ public class MinHeapTest{
      * Testing to see if heapify given identical elements works
      */
     @Test
-    @DisplayName("HeapifyIdenticalElements"){
+    @DisplayName("Heapify with identical elements")
+    public void testHeapifyIdenticalElements(){
         Ride[] identicalRides = {
             new Ride(1, "04:12:23", new String[]{"Passenger1"}, 1, 2),
             new Ride(2, "04:12:23", new String[]{"Passenger2"}, 2, 3),

@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class MinHeap{
     Ride[] rides; //array of rides
     int k; // size of the heap 
-    int defaultSize = 10; // default size
+    int defaultSize = 20; // default size of the heap as there are 20 vehicles
 
     /*
      * initialise minHeap
@@ -52,7 +52,7 @@ public class MinHeap{
      * expands and copies the rides array.
      */
     private void expandHeap(){
-        rides = Arrays.copyOf(rides, rides.length + 15); //just adds 15 new spaces to the heap space
+        System.out.println("Not enough space in minHeap to insert another Ride"); //program is trying to expand the heap but only has maximum 20 rides
     }
 
     /*

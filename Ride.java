@@ -8,10 +8,12 @@ import java.text.SimpleDateFormat;
 public class Ride implements Comparable<Ride>{
     public int rideID;
     public Date timeStamp;
-    public String passengerNames;
+    public String passengerName;
+    public String passengerNames[];
     public int startLocationID;
     public int endLocationID;
     SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
+
 
     /*
      * Initializes a ride with the given parameters
@@ -22,13 +24,19 @@ public class Ride implements Comparable<Ride>{
      * @param startLocationID ID of the start location
      * @param endLocationID ID of the end location
      */
-    public Ride(int rideID, String givenTime, String passengerNames, int startLocationID, int endLocationID) {
+    public Ride(int rideID, String givenTime, String[] passengerNames, int startLocationID, int endLocationID) {
         this.rideID = rideID;
         try{
             this.timeStamp = time.parse(givenTime); //convert string to Date format
         }
-        catch(Exception e){ System.out.println(e);}
-        this.passengerNames = passengerNames;
+        catch(Exception e){ System.out.println(e);} 
+        if(passengerNames.length <= 6){// check the passenger names are within bounds of the maximum amount of people per ride
+            this.passengerNames = passengerNames;
+        }
+        else{
+            System.out.println("Error creating Ride - Too many passengers");
+            return;
+        }
         this.startLocationID = startLocationID;
         this.endLocationID = endLocationID;
     }
@@ -48,7 +56,8 @@ public class Ride implements Comparable<Ride>{
      */
     @Override
     public String toString() {
+        String passengerList = String.join("\n", this.passengerNames);
         return String.format("--- Ride %03d -------\nTime: %tT\nStart ID: %d\nEnd ID: %d\nPassengers:\n%s\n--------------------",
-        rideID, timeStamp, startLocationID, endLocationID, passengerNames);
+        rideID, timeStamp, startLocationID, endLocationID, passengerList);
     }
 }

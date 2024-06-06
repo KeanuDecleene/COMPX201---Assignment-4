@@ -76,16 +76,7 @@ public class MinHeapTest{
     @DisplayName("Entire heap is inserted correctly and heap property is maintained")
     public void testInsertWithOrder(){
         buildHeap();
-        Boolean pass;
-        if (heapTest.rides[0].rideID == 5 && heapTest.rides[1].rideID == 2 && 
-        heapTest.rides[2].rideID == 3 && heapTest.rides[3].rideID == 4 && 
-        heapTest.rides[4].rideID == 1){
-            pass = true;
-        }
-        else {
-            pass = false;
-        }
-        Assertions.assertTrue(pass);
+        Assertions.assertTrue(verifyHeapOrder());
     }
 
     //Tests for Remove

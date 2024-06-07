@@ -263,11 +263,11 @@ public class MinHeapTest{
     @DisplayName("Sort returns a valid sorted array")
     public void testSort(){
         buildHeap();
-        Ride[] sortedRides = heapTest.sort();
-        for(int i = 0; i < sortedRides.length; i++){
-            if(sortedRides[i] != null){
-                if (sortedRides[i+1] !=null){
-                    Assertions.assertTrue(sortedRides[i].compareTo(sortedRides[i+1]) <= 0);
+        heapTest.sort();
+        for(int i = 0; i < heapTest.k; i++){
+            if(heapTest.rides[i] != null){
+                if (heapTest.rides[i+1] !=null){
+                    Assertions.assertTrue(heapTest.rides[i].compareTo(heapTest.rides[i+1]) <= 0);
                 }
             }
         }

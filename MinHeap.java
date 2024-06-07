@@ -62,10 +62,11 @@ public class MinHeap{
      * @param the ride to be inserted
      */
     public void insert(Ride r){
+        if(k != 0){ //to prevent first item problems after introducing ooptimisation
         boolean optimised = false;
         //optimisation for performance
         for (int i = 0; i < k; i++) { //loops through entire array
-            if (rides[i] != null && rides[i].canCombine(r)) { //if current ride can combine with given
+            if (rides[i] != null && rides[i].canCombine(r)) { //if current ride can combine with given ride
                 rides[i].combine(r);
                 optimised = true;
                 break;
@@ -84,10 +85,16 @@ public class MinHeap{
                 System.out.println("All 20 vehicles are being used cannot insert another ride");
                 return;
             }
+            k++;
             rides[k] = r;
             upheap();
-            k++;
         }
+    }
+    else {
+        k++;
+        rides[k] = r;
+        upheap();
+    }
     }
     /*
      * Swaps the minimum values up the tree to maintain the heap integrity 

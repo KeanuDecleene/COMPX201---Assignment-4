@@ -89,10 +89,10 @@ public class MinHeapTest{
         heapTest.insert(ride3);
 
         Assertions.assertEquals(1, heapTest.k);
-        Assertions.assertEquals("15:36:00", heapTest.rides[1].timeStamp);
-        Assertions.assertEquals("1", heapTest.rides[1].passengerNames[0]);
-        Assertions.assertEquals("2", heapTest.rides[1].passengerNames[1]);
-        Assertions.assertEquals("3", heapTest.rides[1].passengerNames[2]);
+        Assertions.assertEquals("15:36:00", heapTest.rides[0].timeStamp);
+        Assertions.assertEquals("1", heapTest.rides[0].passengerNames[0]);
+        Assertions.assertEquals("2", heapTest.rides[0].passengerNames[1]);
+        Assertions.assertEquals("3", heapTest.rides[0].passengerNames[2]);
         Assertions.assertEquals(1, heapTest.k);
     }
 
@@ -114,7 +114,7 @@ public class MinHeapTest{
     @DisplayName("inserting into full Heap")
     public void testInsertFullHeap(){
         for (int i = 0; i < 21; i++) {
-            Ride ride = new Ride(i, "02:12:23", new String[]{"Passenger" + i}, i,i+1);
+            Ride ride = new Ride(i, i +":12:23", new String[]{"Passenger" + i}, i,i+1);
             heapTest.insert(ride);
         }
         Assertions.assertEquals("All 20 vehicles are being used cannot insert another ride", outputStream.toString().trim());

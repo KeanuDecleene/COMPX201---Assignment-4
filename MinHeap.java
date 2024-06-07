@@ -226,18 +226,15 @@ public class MinHeap{
             downheap(i);
         }
         //Extract from the heap one by one and place in sorted array
-        for (int i = k - 1; i > 0; i--) {
+        for (int i = heapSize - 1; i > 0; i--) {
             //swap the root with last element
             Ride temp = rides[0];
             rides[0] = rides[i];
             rides[i] = temp;
-            //reduce the size of heap and restore heap
-            k--;
             downheap(0);
         }
         reverseHeap();//reverse the array as it is sorted backwards
-        k = heapSize; //restore heapSize
-        return rides;
+        return Arrays.copyOf(rides, heapSize); 
     }
 
     /*
@@ -245,7 +242,7 @@ public class MinHeap{
      */
     private void reverseHeap() {
         int start = 0;
-        int end = rides.length - 1;
+        int end = k - 1;
         while (start < end) {
             Ride temp = rides[start];
             rides[start] = rides[end];

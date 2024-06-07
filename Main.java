@@ -23,11 +23,11 @@ public class Main {
         heapTest.insert(ride6);
         heapTest.insert(ride7);
         heapTest.insert(ride8);
-        heapTest.dump();
-        System.out.println(heapTest.k);
+        System.out.println(heapTest.rides[0]);
         heapTest.sort();
         System.out.println(heapTest.k);
         //heapTest.insert(ride5);
+        System.out.println(heapTest.rides[0]);
 
         }
 }

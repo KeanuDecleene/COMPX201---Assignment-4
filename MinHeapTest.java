@@ -257,7 +257,7 @@ public class MinHeapTest{
     //Sort tests
 
     /*
-     * Testing to see if sort returns a valid sorted array
+     * Testing to see if sort produces a valid sorted array
      */
     @Test
     @DisplayName("Sort returns a valid sorted array")

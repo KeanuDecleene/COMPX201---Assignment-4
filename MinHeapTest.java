@@ -303,14 +303,21 @@ public class MinHeapTest{
     @DisplayName("Sort with identicalTimeStamps")
     public void testSortEmpty(){
         Ride ride1 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride2 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride3 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride4 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride5 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride6 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride7 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride8 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
         heapTest.insert(ride1);
-        heapTest.insert(ride1);
-        heapTest.insert(ride1);
-        heapTest.insert(ride1);
-        heapTest.insert(ride1);
-        heapTest.insert(ride1);
-        heapTest.insert(ride1);
-        heapTest.insert(ride1);
+        heapTest.insert(ride2);
+        heapTest.insert(ride3);
+        heapTest.insert(ride4);
+        heapTest.insert(ride5);
+        heapTest.insert(ride6);
+        heapTest.insert(ride7);
+        heapTest.insert(ride8);
         heapTest.sort();
         Assertions.assertEquals(heapTest.k, 2);
         for(int i = 0; i < heapTest.k; i++){

@@ -8,63 +8,26 @@ public class Main {
         //Ride ride4 = new Ride(4, "10:12:23", new String[]{"Cooper", "Fair"}, 4, 5);
         //Ride ride5 = new Ride(5, "1:12:23", new String[]{"Keanux", "Ronald", "H", "3", "e", "5", "7"}, 5, 6);
         Ride ride1 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
-        Ride ride2 = new Ride(2, "12:00:00", new String[]{"Passenger2"}, 2, 3);
-        Ride ride3 = new Ride(3, "12:00:00", new String[]{"Passenger3"}, 3, 4);
-        Ride ride4 = new Ride(4, "12:00:00", new String[]{"Passenger4"}, 4, 5);
+        Ride ride2 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride3 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride4 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride5 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride6 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride7 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride8 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
         heapTest.insert(ride1);
         heapTest.insert(ride2);
         heapTest.insert(ride3);
         heapTest.insert(ride4);
-        heapTest.insert(ride4);
-        heapTest.insert(ride4);
-        heapTest.insert(ride4);
-        heapTest.insert(ride4);
-        heapTest.insert(ride4);
-        heapTest.sort();
-        //heapTest.insert(ride5);
-
-
-        Boolean pass;
-        if (heapTest.k == 4 && heapTest.rides[4] == null){
-            pass = true;
-        }
-        else {
-            pass = false;
-        }
-        
-        //heapTest.dump();
-        System.out.println(heapTest.k);
-        //System.out.println(pass);
+        heapTest.insert(ride5);
+        heapTest.insert(ride6);
+        heapTest.insert(ride7);
+        heapTest.insert(ride8);
         heapTest.dump();
-
-        //heapTest.dump();
-        //heapTest.heapify(heapTest.rides, 5);
-        //for (int i = 0; i < 21; i++) {
-         //   Ride ride = new Ride(i, "02:12:23", new String[]{"Passenger" + i}, i,i+1);
-        //    heapTest.insert(ride);
-        //}
-        //heapTest.dump();
         System.out.println(heapTest.k);
-
-
-        try{
-        String[] h =  {"alice", "James"};
-        String[] b = {"kean", "jksj"," James"};
-        String[] j = {"kehn", "jksj", "James"};
-        Ride car = new Ride( 4, "09:12:23", h, 2, 4);
-        Ride kean = new Ride( 2, "05:14:23", b, 2, 4);
-        Ride keanu = new Ride( 3, "02:14:23", j, 2, 4);
-        //System.out.println(car);
-        //System.out.println(kean);
-        MinHeap minHeap = new MinHeap();
-        minHeap.insert(car);
-        minHeap.insert(kean);
-        minHeap.insert(keanu);
-        minHeap.insert(car);
-       // minHeap.dump();
-        } catch (Exception e){
-            System.out.println();
-        }
+        heapTest.sort();
+        System.out.println(heapTest.k);
+        //heapTest.insert(ride5);
 
         }
 }

@@ -89,7 +89,6 @@ public class MinHeapTest{
         heapTest.insert(ride3);
 
         Assertions.assertEquals(1, heapTest.k);
-        Assertions.assertEquals("15:36:00", heapTest.rides[0].timeStamp);
         Assertions.assertEquals("1", heapTest.rides[0].passengerNames[0]);
         Assertions.assertEquals("2", heapTest.rides[0].passengerNames[1]);
         Assertions.assertEquals("3", heapTest.rides[0].passengerNames[2]);

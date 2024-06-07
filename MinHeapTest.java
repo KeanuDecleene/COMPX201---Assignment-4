@@ -312,7 +312,7 @@ public class MinHeapTest{
         heapTest.insert(ride1);
         heapTest.insert(ride1);
         heapTest.sort();
-        Assertions.assertTrue(heapTest.k, 2);
+        Assertions.assertEquals(heapTest.k, 2);
         for(int i = 0; i < heapTest.k; i++){
             if(heapTest.rides[i] != null){
                 if (heapTest.rides[i+1] !=null){

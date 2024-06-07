@@ -167,7 +167,7 @@ public class MinHeapTest{
     //isEmpty tests
 
     /*
-     * Testing to see if heap is empty
+     * Testing to see if heap isempty is working on empty heap
      */
     @Test
     @DisplayName("Empty Heap")
@@ -176,7 +176,7 @@ public class MinHeapTest{
     }
 
     /*
-     * Testing to see if heap is not empty
+     * Testing to see if heap isempty is working on non-empty heap
      */
     @Test
     @DisplayName("Non Empty Heap")

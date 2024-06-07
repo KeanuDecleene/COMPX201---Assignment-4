@@ -7,13 +7,21 @@ public class Main {
         //Ride ride3 = new Ride(3, "07:12:23", new String[] {"Max", "Jubilee"}, 3, 4);
         //Ride ride4 = new Ride(4, "10:12:23", new String[]{"Cooper", "Fair"}, 4, 5);
         //Ride ride5 = new Ride(5, "1:12:23", new String[]{"Keanux", "Ronald", "H", "3", "e", "5", "7"}, 5, 6);
-        Ride ride1 = new Ride(1, "15:30:00", new String[]{"Passenger1"}, 324, 586);
-        Ride ride2 = new Ride(2, "15:34:00", new String[]{"Passenger2"}, 324, 586);
-        Ride ride3 = new Ride(3, "15:36:00", new String[]{"Passenger3"}, 324, 586);
+        Ride ride1 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        Ride ride2 = new Ride(2, "12:00:00", new String[]{"Passenger2"}, 2, 3);
+        Ride ride3 = new Ride(3, "12:00:00", new String[]{"Passenger3"}, 3, 4);
+        Ride ride4 = new Ride(4, "12:00:00", new String[]{"Passenger4"}, 4, 5);
         heapTest.insert(ride1);
         heapTest.insert(ride2);
         heapTest.insert(ride3);
-        //heapTest.insert(ride4);
+        heapTest.insert(ride4);
+        heapTest.insert(ride4);
+        heapTest.insert(ride4);
+        heapTest.insert(ride4);
+        heapTest.insert(ride4);
+        heapTest.insert(ride4);
+        
+        heapTest.sort();
         //heapTest.insert(ride5);
 
         Boolean pass;

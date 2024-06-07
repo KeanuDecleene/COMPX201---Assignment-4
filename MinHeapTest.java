@@ -1,4 +1,4 @@
-import java.beans.Transient;
+
 import java.io.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions.*;
@@ -287,6 +287,32 @@ public class MinHeapTest{
     public void testSort(){
         buildHeap();
         heapTest.sort();
+        for(int i = 0; i < heapTest.k; i++){
+            if(heapTest.rides[i] != null){
+                if (heapTest.rides[i+1] !=null){
+                    Assertions.assertTrue(heapTest.rides[i].compareTo(heapTest.rides[i+1]) <= 0);
+                }
+            }
+        }
+    }
+
+    /*
+     * Testing to see if sort works correctly with identical timestamps
+     */
+    @Test 
+    @DisplayName("Sort with identicalTimeStamps")
+    public void testSortEmpty(){
+        Ride ride1 = new Ride(1, "12:00:00", new String[]{"Passenger1"}, 1, 2);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.insert(ride1);
+        heapTest.sort();
+        Assertions.assertTrue(heapTest.k, 2);
         for(int i = 0; i < heapTest.k; i++){
             if(heapTest.rides[i] != null){
                 if (heapTest.rides[i+1] !=null){

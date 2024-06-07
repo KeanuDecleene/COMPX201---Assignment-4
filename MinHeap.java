@@ -238,8 +238,7 @@ public class MinHeap{
     }
 
     /*
-     * reverse the order of the rides in the heap
-     * 
+     * reverse the order of the rides in the heap after used for after sorting
      */
     private void reverseHeap() {
         int start = 0;
@@ -250,7 +249,6 @@ public class MinHeap{
             rides[end] = temp;
             start++;
             end--;
-    
     }
 }
 }

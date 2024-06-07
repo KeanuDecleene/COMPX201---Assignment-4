@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 /*
  * A class for the nodes in the minheap data structure
  * 
@@ -43,6 +44,29 @@ public class Ride implements Comparable<Ride>{
         this.endLocationID = endLocationID;
     }
 
+    /*
+     * Checks if this ride and the ride given are able to be combined for optimisation purposes
+     * 
+     * @param otherRide ride to compare with
+     * @return true if we can combine with other ride false otherwise
+     */
+    public boolean canCombine(Ride otherRide){
+        long timeDiff = Math.abs(this.timeStamp.getTime() - otherRide.timeStamp.getTime());
+        boolean timeDiffValid = timeDiff <= 10 * 60 *1000; // 10 minutes
+        boolean validPassengers = (this.passengerNames.length + otherRide.passengerNames.length) <= 6;
+        return timeDiffValid && validPassengers;
+    }
+
+    public void combine(Ride otherRide){
+        //copying the passengers into combined passengers
+        String[] combinedPassengers = new String[this.passengerNames.length + otherRide.passengerNames.length]; 
+        System.arraycopy(this.passengerNames, 0, combinedPassengers, 0, this.passengerNames.length);
+        System.arraycopy(otherRide.passengerNames, 0, combinedPassengers, this.passengerNames.length, otherRide.passengerNames.length);
+        this.passengerNames = combinedPassengers;
+        this.timeStamp = otherRide.timeStamp;
+        this.rideID = otherRide.rideID+1;
+        
+    }
 
     /*
      * Checks if the ride is valid

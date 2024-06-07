@@ -57,6 +57,11 @@ public class Ride implements Comparable<Ride>{
         return timeDiffValid && validPassengers;
     }
 
+    /*
+     * Combines this ride with the ride given
+     * 
+     * @param otherRide ride to combine with
+     */
     public void combine(Ride otherRide){
         //copying the passengers into combined passengers
         String[] combinedPassengers = new String[this.passengerNames.length + otherRide.passengerNames.length]; 
@@ -65,7 +70,7 @@ public class Ride implements Comparable<Ride>{
         this.passengerNames = combinedPassengers;
         this.timeStamp = otherRide.timeStamp;
         this.rideID = otherRide.rideID+1;
-        
+        //start location id and end location id stay the same
     }
 
     /*

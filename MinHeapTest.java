@@ -1,8 +1,6 @@
 import java.io.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions.*;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
 
 /*
@@ -95,8 +93,8 @@ public class MinHeapTest{
             Ride ride = new Ride(i, "02:12:23", new String[]{"Passenger" + i}, i,i+1);
             heapTest.insert(ride);
         }
-        Assertions.AssertEquals("All 20 vehicles are being used cannot insert another ride", outputStream.toString().trim());
-        Assertions.AssertEquals(heapTest.k, 20);
+        Assertions.assertEquals("All 20 vehicles are being used cannot insert another ride", outputStream.toString().trim());
+        Assertions.assertEquals(heapTest.k, 20);
     }
 
     /*
@@ -107,8 +105,8 @@ public class MinHeapTest{
     public void testInsertInvalidRide(){
         Ride ride5 = new Ride(5, "1:12:23", new String[]{"K", "R", "H", "3", "e", "5", "7"}, 5, 6);
         heapTest.insert(ride5);
-        Assertions.AssertEquals("Error creating Ride - Too many passengers", outputStream.toString().trim());
-        Assertions.AssertEquals(heapTest.k, 0);
+        Assertions.assertEquals("Error creating Ride - Too many passengers", outputStream.toString().trim());
+        Assertions.assertEquals(heapTest.k, 0);
     }
     //Tests for Remove
 

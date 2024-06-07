@@ -1,3 +1,4 @@
+import java.beans.Transient;
 import java.io.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions.*;
@@ -73,8 +74,31 @@ public class MinHeapTest{
     }
 
     /*
+     * checks inserting with 3 rides that are within 10 minutes of each other, checks if there is only one ride in heap after,
+     * checks to see if all passengers are included in the final array
+     */
+    @Test
+    @DisplayName("Inserting with optimisation")
+    public void testInsertWithOptimisation(){
+        //all within 10 minutes of each other
+        Ride ride1 = new Ride(1, "15:30:00", new String[]{"1"}, 324, 586);
+        Ride ride2 = new Ride(2, "15:34:00", new String[]{"2"}, 324, 586);
+        Ride ride3 = new Ride(3, "15:36:00", new String[]{"3"}, 324, 586);
+        heapTest.insert(ride1);
+        heapTest.insert(ride2);
+        heapTest.insert(ride3);
+
+        Assertions.assertEquals(1, heapTest.k);
+        Assertions.assertEquals("15:36:00", heapTest.rides[1].timeStamp);
+        Assertions.assertEquals("1", heapTest.rides[1].passengerNames[0]);
+        Assertions.assertEquals("2", heapTest.rides[1].passengerNames[1]);
+        Assertions.assertEquals("3", heapTest.rides[1].passengerNames[2]);
+        Assertions.assertEquals(1, heapTest.k);
+    }
+
+    /*
      * Testing to see if multiple rides are inserted correctly with the minimum time at the beginning of the minHeap and
-     * that the minHeap array is maintained correctly whilst inserting
+     * that the minHeap array is maintained correctly whilst inserting with the normal time gaps
      */
     @Test 
     @DisplayName("Entire heap is inserted correctly and heap property is maintained")

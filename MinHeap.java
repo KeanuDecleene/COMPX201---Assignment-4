@@ -64,8 +64,8 @@ public class MinHeap{
     public void insert(Ride r){
         boolean optimised = false;
         //optimisation for performance
-        for (int i = 0; i < k; i++) {
-            if (rides[i] != null && rides[i].canCombine(r)) {
+        for (int i = 0; i < k; i++) { //loops through entire array
+            if (rides[i] != null && rides[i].canCombine(r)) { //if current ride can combine with given
                 rides[i].combine(r);
                 optimised = true;
                 break;

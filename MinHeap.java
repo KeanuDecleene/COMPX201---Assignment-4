@@ -1,5 +1,10 @@
 import java.util.Arrays;
 
+/*
+ * Replaceable minimum binary Heap implementation
+ * 
+ * @author Keanu De Cleene
+ */
 public class MinHeap{
     Ride[] rides; //array of rides
     int k; // size of the heap 
@@ -19,6 +24,10 @@ public class MinHeap{
      * for all the rides in the array print them out to terminal 
      */
     public void dump(){
+        if(k == 0){
+            System.out.println("There are no rides");
+            return;
+        }
         for (Ride r : rides) {
             if (r != null) {
                 System.out.println(r.toString());
@@ -47,22 +56,22 @@ public class MinHeap{
     private int getParent(int i){
         return (i - 1) / 2;
     }
-
-    /*
-     * expands and copies the rides array.
-     */
-    private void expandHeap(){
-        System.out.println("Not enough space in minHeap to insert another Ride"); //program is trying to expand the heap but only has maximum 20 rides
-    }
-
     /*
      * insert a ride into the minHeap
      * 
      * @param the ride to be inserted
      */
     public void insert(Ride r){
+        if(!r.isValid()){ //checking if the ride is valid
+            return;
+        }
+        if(r.equals(null)){
+            System.out.println("Cannot insert null Ride");
+            return;
+        }
         if (k == rides.length){
-            expandHeap(); //expand the heap
+            System.out.println("All 20 vehicles are being used cannot insert another ride");
+            return;
         }
         rides[k] = r;
         upheap();
@@ -75,7 +84,7 @@ public class MinHeap{
     private void upheap(){
         int i = k;
         int parent = getParent(i);
-        while (i > 0 && rides[i].compareTo(rides[parent]) < 0) { //while not root and current ride is less than the parent 
+        while (i > 0 && rides[i].compareTo(rides[parent]) < 0 && rides[parent] != null) { //while not root and current ride is less than the parent 
             swap(i, parent);
             i = parent;
             parent = getParent(i);
@@ -88,7 +97,7 @@ public class MinHeap{
      * @param the ride to be removed
      */
     public void remove(Ride r){
-        if (k == 0) return; //if heap is empty
+        if (k == 0 || r == null) return; //if heap is empty
         int index = getIndexRide(r);
         if (index == -1) {
             return; //didn't find element to remove
@@ -115,10 +124,10 @@ public class MinHeap{
             if (rChild < k && rides[rChild] == null) {
                 break;
             }
-            if (rChild < k && rides[rChild].compareTo(rides[lChild]) < 0){ // find the smaller child
+            if (rChild < k && rides[rChild] != null && rides[rChild].compareTo(rides[lChild]) < 0){ // find the smaller child
                 minChild = rChild;
             }
-            if (rides[i].compareTo(rides[minChild]) <= 0){ //if the current ride is less than or equal to smaller child 
+            if (rides[i] == null || rides[minChild] == null || rides[i].compareTo(rides[minChild]) <= 0){ //if the current ride is less than or equal to smaller child 
                 break; //stop
             }
             swap(i, minChild); //swap the ride with smaller child
@@ -233,5 +242,4 @@ public class MinHeap{
     
     }
 }
-
 }

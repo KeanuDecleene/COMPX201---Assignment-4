@@ -12,6 +12,7 @@ public class Ride implements Comparable<Ride>{
     public String passengerNames[];
     public int startLocationID;
     public int endLocationID;
+    private boolean isValid; //added for checking amount of passengers is valid
     SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
 
 
@@ -32,15 +33,24 @@ public class Ride implements Comparable<Ride>{
         catch(Exception e){ System.out.println(e);} 
         if(passengerNames.length <= 6){// check the passenger names are within bounds of the maximum amount of people per ride
             this.passengerNames = passengerNames;
+            this.isValid = true;
         }
         else{
             System.out.println("Error creating Ride - Too many passengers");
-            return;
+            this.isValid = false;
         }
         this.startLocationID = startLocationID;
         this.endLocationID = endLocationID;
     }
 
+
+    /*
+     * Checks if the ride is valid
+     * @return true if the ride is valid, false otherwise
+     */
+    public boolean isValid(){
+        return this.isValid;
+    }
     /*
      * Implements the compareTo method to compare based on timestamp
      * 
@@ -48,6 +58,9 @@ public class Ride implements Comparable<Ride>{
      */
     @Override
     public int compareTo(Ride otherRide) {
+        if(otherRide == null){
+            return 1; // this assumes any ride is less than a null ride 
+        }
         return this.timeStamp.compareTo(otherRide.timeStamp); 
     }
 

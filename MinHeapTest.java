@@ -4,6 +4,11 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 
+/*
+ * A minimum heap testing implementation
+ * 
+ * @author Keanu De Cleene
+ */
 public class MinHeapTest{
     private MinHeap heapTest;
     private final PrintStream output = System.out;
@@ -79,6 +84,31 @@ public class MinHeapTest{
         Assertions.assertTrue(verifyHeapOrder());
     }
 
+    /*
+     * Testing error handling when trying to insert too many Rides
+     */
+    @Test
+    @DisplayName("inserting into full Heap")
+    public void testInsertFullHeap(){
+        for (int i = 0; i < 21; i++) {
+            Ride ride = new Ride(i, "02:12:23", new String[]{"Passenger" + i}, i,i+1);
+            heapTest.insert(ride);
+        }
+        Assertions.AssertEquals("All 20 vehicles are being used cannot insert another ride", outputStream.toString().trim());
+        Assertions.AssertEquals(heapTest.k, 20);
+    }
+
+    /*
+     * Testing error handling when trying to insert an invalid ride with too many passengers
+     */
+    @Test
+    @DisplayName("inserting an invalid ride")
+    public void testInsertInvalidRide(){
+        Ride ride5 = new Ride(5, "1:12:23", new String[]{"K", "R", "H", "3", "e", "5", "7"}, 5, 6);
+        heapTest.insert(ride5);
+        Assertions.AssertEquals("Error creating Ride - Too many passengers", outputStream.toString().trim());
+        Assertions.AssertEquals(heapTest.k, 0);
+    }
     //Tests for Remove
 
     /*
@@ -214,7 +244,34 @@ public class MinHeapTest{
         Assertions.assertTrue(verifyHeapOrder());
     }
 
+    /*
+     * Testing heapify with an empty array
+     */
+    @Test
+    @DisplayName("Heapify on empty array")
+    public void testHeapifyEmptyArray(){
+        Ride[] emptyRides = {};
+        heapTest.heapify(emptyRides, 0);
+        Assertions.assertTrue(heapTest.isEmpty());
+    }
 
+    //Sort tests
+
+    /*
+     * Testing to see if sort returns a valid sorted array
+     */
+    @Test
+    @DisplayName("Sort returns a valid sorted array")
+    public void testSort(){
+        buildHeap();
+        Ride[] sortedRides = heapTest.sort();
+        for(int i = 0; i < sortedRides.length; i++){
+            if(sortedRides[i] != null){
+                Assertions.assertTrue(sortedRides[i].compareTo(sortedRides[i+1]) <= 0);
+            }
+        }
+
+    }
 
 }
 

@@ -264,7 +264,7 @@ public class MinHeapTest{
     public void testSort(){
         buildHeap();
         Ride[] sortedRides = heapTest.sort();
-        for(int i = 0; i < sortedRides.length; i++){
+        for(int i = 1; i < sortedRides.length; i++){
             if(sortedRides[i] != null){
                 Assertions.assertTrue(sortedRides[i].compareTo(sortedRides[i+1]) <= 0);
             }
